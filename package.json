@@ -1,6 +1,6 @@
 {
   "name": "dontpad-clone",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -17,6 +17,7 @@
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.5",
+    "uuid": "^8.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -46,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@types/uuid": "^9.0.8",
     "gh-pages": "^6.1.1"
   },
   "homepage": "http://ogatalars.github.io/dontpad_clone"
