@@ -1,46 +1,109 @@
-# Getting Started with Create React App
+# Dontpad Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto é uma versão simplificada do Dontpad com suporte a edição apenas com senha, e em dark mode permanente, desenvolvido com React, TypeScript e Node.js/Express para o backend.
 
-## Available Scripts
+## Funcionalidades
 
-In the project directory, you can run:
+- Autenticação por senha para edição de conteúdo.
+- Interface de usuário em dark mode.
+- Edição de texto simples com salvamento em arquivo no servidor.
 
-### `npm start`
+## Pré-requisitos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Node.js instalado
+- NPM instalado
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Como executar o projeto
 
-### `npm test`
+### Backend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Navegue até o diretório do projeto.
 
-### `npm run build`
+    ```sh
+    cd httpbinproject
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Instale as dependências do backend.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```sh
+    npm install
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Inicie o servidor backend.
 
-### `npm run eject`
+    ```sh
+    node server.js
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Frontend
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Navegue até o diretório `dontpad-clone`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    ```sh
+    cd dontpad-clone
+    ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. Instale as dependências do frontend.
 
-## Learn More
+    ```sh
+    npm install
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Inicie a aplicação React.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ```sh
+    npm start
+    ```
+
+4. Acesse a aplicação em [http://localhost:3000](http://localhost:3000).
+
+## Como usar
+
+1. **Login**: Ao acessar o site, você verá uma tela de login. Insira a senha definida no código para autenticar.
+2. **Editor**: Após a autenticação, você poderá editar o texto e salvá-lo. O conteúdo será salvo no servidor.
+
+## Deployment no GitHub Pages
+
+### Configurar GitHub Pages
+
+Para fazer o deployment no GitHub Pages sem um servidor backend, vamos usar o local storage do navegador para armazenar o texto.
+
+### Atualizar o Projeto
+
+#### `src/pages/Editor.tsx`
+
+Atualize o componente `Editor` para usar o local storage:
+
+```tsx
+import React, { useState, useEffect } from 'react';
+import './Editor.css';
+
+const Editor: React.FC = () => {
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    const savedText = localStorage.getItem('content');
+    if (savedText) {
+      setText(savedText);
+    }
+  }, []);
+
+  const handleSave = () => {
+    localStorage.setItem('content', text);
+  };
+
+  return (
+    <div className="editor-container">
+      <h2>Editor</h2>
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        rows={10}
+        cols={50}
+      />
+      <button onClick={handleSave}>Save</button>
+    </div>
+  );
+};
+
+export default Editor;
