@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './Editor.css';
 
-const Editor: React.FC = () => {
+const Editor: React.FC<{ code: string; onBack: () => void }> = ({ code, onBack }) => {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    const savedText = localStorage.getItem('content');
+    const savedText = localStorage.getItem(code);
     if (savedText) {
       setText(savedText);
     }
-  }, []);
+  }, [code]);
 
   const handleSave = () => {
-    localStorage.setItem('content', text);
+    localStorage.setItem(code, text);
+    alert(`Your code is: ${code}`);
   };
 
   return (
@@ -21,10 +22,11 @@ const Editor: React.FC = () => {
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
-        rows={10}
-        cols={50}
+        rows={20}
+        cols={80}
       />
       <button onClick={handleSave}>Save</button>
+      <button onClick={onBack}>Back to Home</button>
     </div>
   );
 };

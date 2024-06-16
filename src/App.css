@@ -1,0 +1,23 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  button {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  

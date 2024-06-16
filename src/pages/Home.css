@@ -1,4 +1,4 @@
-.login-container {
+.home-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,5 +10,10 @@
     margin: 10px 0;
     padding: 10px;
     width: 200px;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
   }
   

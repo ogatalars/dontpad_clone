@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
-import Login from './pages/Login';
+import Home from './pages/Home';
 import Editor from './pages/Editor';
+import './App.css';
 
 const App: React.FC = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [code, setCode] = useState<string | null>(null);
 
-  const handleLogin = (password: string) => {
-    if (password === 'your_password') {
-      setIsAuthenticated(true);
-    } else {
-      alert('Incorrect password');
-    }
+  const handleSubmit = (code: string) => {
+    setCode(code);
+  };
+
+  const handleBack = () => {
+    setCode(null);
   };
 
   return (
-    <div>
-      {isAuthenticated ? <Editor /> : <Login onLogin={handleLogin} />}
+    <div className="app-container">
+      {code === null ? (
+        <Home onSubmit={handleSubmit} />
+      ) : (
+        <Editor code={code} onBack={handleBack} />
+      )}
     </div>
   );
 };
