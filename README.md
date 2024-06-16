@@ -20,7 +20,7 @@ Este projeto é uma versão simplificada do Dontpad com suporte a edição apena
 1. Navegue até o diretório do projeto.
 
     ```sh
-    cd httpbinproject
+    cd dontpad_clone
     ```
 
 2. Instale as dependências do backend.
