@@ -1,19 +1,22 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import './Editor.css';
 
 const Editor: React.FC = () => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
 
   useEffect(() => {
-    axios.get("/api/content").then((response) => setText(response.data));
+    const savedText = localStorage.getItem('content');
+    if (savedText) {
+      setText(savedText);
+    }
   }, []);
 
   const handleSave = () => {
-    axios.post("/api/content", { text });
+    localStorage.setItem('content', text);
   };
 
   return (
-    <div>
+    <div className="editor-container">
       <h2>Editor</h2>
       <textarea
         value={text}
