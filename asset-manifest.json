@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/dontpad_clone/static/css/main.b2722d06.css",
+    "main.js": "/dontpad_clone/static/js/main.42baa2cf.js",
+    "index.html": "/dontpad_clone/index.html",
+    "main.b2722d06.css.map": "/dontpad_clone/static/css/main.b2722d06.css.map",
+    "main.42baa2cf.js.map": "/dontpad_clone/static/js/main.42baa2cf.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b2722d06.css",
+    "static/js/main.42baa2cf.js"
+  ]
+}
